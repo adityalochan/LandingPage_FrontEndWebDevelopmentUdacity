@@ -221,3 +221,9 @@ section.your-active-class .landing__container::after {
 		           rotate(-360deg);
 	}
 }
+
+/* Add this to your existing CSS file */
+.active-link {
+  color: #f00; /* Highlight color, e.g., red */
+  font-weight: bold; /* Make it bold for emphasis */
+}

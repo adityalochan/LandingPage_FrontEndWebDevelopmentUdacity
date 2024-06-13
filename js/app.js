@@ -14,11 +14,6 @@
  */
 
 /**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
- */
-
-/**
  * Define Global Variables
  *
  */
@@ -39,6 +34,21 @@ const sections = document.querySelectorAll("section");
 function isInViewport(section) {
   const rect = section.getBoundingClientRect();
   return rect.top >= 0 && rect.top < window.innerHeight;
+}
+
+/**
+ * Helper function to set the active navigation link
+ */
+function setActiveNavLink() {
+  sections.forEach((section) => {
+    const navLink = document.querySelector(`a[href="#${section.id}"]`);
+    if (isInViewport(section)) {
+      navLink.classList.add("active-link");
+    } 
+    else {
+      navLink.classList.remove("active-link");
+    }
+  });
 }
 
 /**
@@ -75,6 +85,7 @@ function setActiveSection() {
       section.classList.remove("your-active-class");
     }
   });
+  setActiveNavLink(); // Also update the active nav link
 }
 
 // Scroll to anchor ID using scrollTO event
@@ -101,5 +112,5 @@ document.addEventListener("DOMContentLoaded", buildNav);
 // Scroll to section on link click
 navList.addEventListener("click", scrollToSection);
 
-// Set sections as active
+// Set sections as active and highlight nav links on scroll
 document.addEventListener("scroll", setActiveSection);
